@@ -22,7 +22,7 @@ import com.example.service.KoreanService;
 public class WordListController {
 
 	//1ページ当たりの表示件数
-	private static final int NUM_PER_PAGE = 3;
+	private static final int NUM_PER_PAGE = 6;
 
 	@Autowired
 	KoreanService service;
@@ -123,7 +123,7 @@ public class WordListController {
 
 		model.addAttribute("korean", service.getKoreanByCategory(category));
 
-		return "redirect:/wordlist";
+		return "korean";
 	}
 
 

@@ -8,7 +8,7 @@
 </head>
 <body>
 <c:forEach items="${koreans}" var="korean">
-<div class="article" style="width: 300px; border: 1px solid #000; padding:10px;">
+<div id="sampleBox" class="article" style="width: 300px; border: 1px solid #000; padding:10px;">
 
 　　<p><c:out value="${korean.name}" /></p>
 　　
@@ -20,6 +20,38 @@
     <button class="close">閉じる</button>
 </div>
  </c:forEach>
+
+
+
+ 	<!-- ページ番号 -->
+<c:choose>
+	<c:when test="${page == 1}">
+		| 前
+	</c:when>
+	<c:otherwise>
+		| <a href="?page=<c:out value="${page - 1}" />">前</a>
+	</c:otherwise>
+</c:choose>
+
+<c:forEach begin="1" end="${totalPages}" varStatus="vs">
+	<c:choose>
+		<c:when test="${page == vs.count}">
+			| ${vs.count}
+		</c:when>
+		<c:otherwise>
+			| <a href="?page=${vs.count}">${vs.count}</a>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>
+
+<c:choose>
+	<c:when test="${page == totalPages}">
+		| 次
+	</c:when>
+	<c:otherwise>
+		| <a href="?page=<c:out value="${page + 1}" />">次</a>
+	</c:otherwise>
+</c:choose>
 
  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  <script>
@@ -42,5 +74,7 @@
  });
 
  </script>
+
+
 </body>
 </html>

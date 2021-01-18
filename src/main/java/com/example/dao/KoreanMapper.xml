@@ -35,6 +35,7 @@
 	<select id="selectLimited"
 		resultType="com.example.domain.Korean">
 		SELECT * FROM korean
+		ORDER BY RAND()
 		LIMIT #{offset}, #{num}
 	</select>
 
